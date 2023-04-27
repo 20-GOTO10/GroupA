@@ -45,7 +45,7 @@ def LoadEvaluation():
         data_path = "/opt/airflow/data/kaggle_visible_evaluation_triplets.csv"
         os.makedirs(os.path.dirname(data_path), exist_ok=True)
 
-        url = "https://raw.githubusercontent.com/JamisonUK/GroupA/develop/DataSet/kaggle_visible_evaluation_triplets.csv"
+        url = "https://media.githubusercontent.com/media/Elvis-Jagger-Abdul-Jabbar/dataSet/main/kaggle_visible_evaluation_triplets.csv"
 
         response = requests.request("GET", url)
 

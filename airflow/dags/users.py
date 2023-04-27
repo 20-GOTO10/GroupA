@@ -21,7 +21,7 @@ def LoadUsers():
         postgres_conn_id="data-test",
         sql="""
             CREATE TABLE IF NOT EXISTS users (
-                "User_ID" VARCHAR PRIMARY KEY,
+                "User_ID" VARCHAR PRIMARY KEY
             );""",
     )
 
@@ -31,7 +31,7 @@ def LoadUsers():
         sql="""
             DROP TABLE IF EXISTS users_temp;
             CREATE TABLE users_temp (
-                "User_ID" VARCHAR PRIMARY KEY,
+                "User_ID" VARCHAR PRIMARY KEY
             );""",
     )
 
@@ -41,7 +41,7 @@ def LoadUsers():
         data_path = "/opt/airflow/data/kaggle_users.csv"
         os.makedirs(os.path.dirname(data_path), exist_ok=True)
 
-        url = "https://raw.githubusercontent.com/JamisonUK/GroupA/develop/DataSet/kaggle_users.csv"
+        url = "https://raw.githubusercontent.com/Elvis-Jagger-Abdul-Jabbar/dataSet/main/kaggle_users.csv"
 
         response = requests.request("GET", url)
 

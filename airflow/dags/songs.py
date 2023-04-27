@@ -43,7 +43,7 @@ def LoadSongs():
         data_path = "/opt/airflow/data/kaggle_songs.csv"
         os.makedirs(os.path.dirname(data_path), exist_ok=True)
 
-        url = "https://raw.githubusercontent.com/JamisonUK/GroupA/develop/DataSet/kaggle_songs.csv"
+        url = "https://raw.githubusercontent.com/Elvis-Jagger-Abdul-Jabbar/dataSet/main/kaggle_songs.csv"
 
         response = requests.request("GET", url)
 

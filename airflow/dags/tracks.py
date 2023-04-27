@@ -67,7 +67,7 @@ def LoadTracks():
         data_path = "/opt/airflow/data/track_metadata.csv"
         os.makedirs(os.path.dirname(data_path), exist_ok=True)
 
-        url = "https://raw.githubusercontent.com/JamisonUK/GroupA/develop/DataSet/track_metadata.csv"
+        url = "https://media.githubusercontent.com/media/Elvis-Jagger-Abdul-Jabbar/dataSet/main/track_metadata.csv"
 
         response = requests.request("GET", url)
 

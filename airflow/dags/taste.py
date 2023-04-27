@@ -22,7 +22,8 @@ def LoadTaste():
         sql="""
             CREATE TABLE IF NOT EXISTS taste (
                 "Song_ID" VARCHAR PRIMARY KEY,
-                "Track_ID" VARCHAR
+                "Track_ID" VARCHAR,
+                "Comments" VARCHAR
             );""",
     )
 
@@ -33,7 +34,8 @@ def LoadTaste():
             DROP TABLE IF EXISTS taste_temp;
             CREATE TABLE taste_temp (
                 "Song_ID" VARCHAR PRIMARY KEY,
-                "Track_ID" VARCHAR
+                "Track_ID" VARCHAR,
+                "Comments" VARCHAR
             );""",
     )
 
@@ -43,7 +45,7 @@ def LoadTaste():
         data_path = "/opt/airflow/data/taste_profile_song_to_tracks.csv"
         os.makedirs(os.path.dirname(data_path), exist_ok=True)
 
-        url = "https://raw.githubusercontent.com/JamisonUK/GroupA/develop/DataSet/taste_profile_song_to_tracks.csv"
+        url = "https://media.githubusercontent.com/media/Elvis-Jagger-Abdul-Jabbar/dataSet/main/taste_profile_song_to_tracks.csv"
 
         response = requests.request("GET", url)
 
