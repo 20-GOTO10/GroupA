@@ -80,6 +80,8 @@ http://millionsongdataset.com/
 We will be coordinating data from several sets that will contain information
 about songs from listener data to lyric content.
 
+DataSet located in: https://github.com/Elvis-Jagger-Abdul-Jabbar/dataSet
+
 A Quick Guide is available in Wiki section for general installation and command lines etc.
 
 
