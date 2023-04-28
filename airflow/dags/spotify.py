@@ -6,6 +6,7 @@ from collections import OrderedDict, defaultdict
 from datetime import datetime, time
 from typing import Any, Dict
 
+from airflow import task
 import airflow
 import pandas as pd
 import requests
@@ -190,7 +191,7 @@ def fetch_spotify_data(dag_date, ti) -> Any:
     listens_df = pd.DataFrame(listens)
     print(listens_df)
 
-
+@task
 def write_to_disk(dag_date, dag_logical_date, ti):
     print("Dag Date:", dag_date)
     print("Dag Logical Date: ", dag_logical_date)
@@ -239,7 +240,7 @@ def write_to_disk(dag_date, dag_logical_date, ti):
             tracks_csv_writer.writerow(track_values)
         print("tracks csv file saved to Disk!")
 
-
+@task
 def insert_to_aws_rds_postgres(ti):
     """Task to upload to AWS RDS Database"""
     postgres_hook = PostgresHook("aws_rds_postgres")
@@ -289,7 +290,7 @@ def insert_to_aws_rds_postgres(ti):
     cursor.close()
     conn.close()
 
-
+@task
 def upload_to_s3_data_lake(dag_date, bucket_name: str) -> None:
     save_dir: str = "/home/airflow/spotify-data"
     listens_dir: str = "listens"
@@ -348,3 +349,5 @@ upload_to_s3_data_lake = PythonOperator(
 
 fetch_spotify_data >> [upload_to_aws_rds, write_to_disk]
 write_to_disk >> upload_to_s3_data_lake
+
+dag = fetch_spotify_data()

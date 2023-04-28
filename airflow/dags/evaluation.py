@@ -21,7 +21,7 @@ def LoadEvaluation():
         postgres_conn_id="data-test",
         sql="""
             CREATE TABLE IF NOT EXISTS evaluation (
-                "User_ID" VARCHAR PRIMARY KEY,
+                "User_ID" VARCHAR,
                 "Song_ID" VARCHAR,
                 "Plays" INTEGER
             );""",
@@ -33,7 +33,7 @@ def LoadEvaluation():
         sql="""
             DROP TABLE IF EXISTS evaluation_temp;
             CREATE TABLE evaluation_temp (
-                "User_ID" VARCHAR PRIMARY KEY,
+                "User_ID" VARCHAR,
                 "Song_ID" VARCHAR,
                 "Plays" INTEGER
             );""",
@@ -71,8 +71,7 @@ def LoadEvaluation():
                 SELECT DISTINCT *
                 FROM evaluation_temp
             ) t
-            ON CONFLICT ("User_ID") DO UPDATE
-            SET "User_ID" = excluded."User_ID";
+           ;
         """
         try:
             postgres_hook = PostgresHook(postgres_conn_id="data-test")
